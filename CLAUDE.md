@@ -4,11 +4,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Repository Purpose
 
-This repository will serve as a submodule containing workflow automation tools and utilities that will replace most of the current functionality in the main Anchor project. The goal is to extract and modularize development workflow scripts, automation tools, and utilities into this standalone, reusable package.
+This repository provides a comprehensive collection of workflow automation tools and utilities designed for global use across development projects. While initially extracted from patterns developed in the Anchor project, these tools are built to be universally applicable for any development team seeking robust automation, quality gates, and productivity workflows.
+
+**Key Goals:**
+- **Universal Applicability**: Works with any tech stack and project structure
+- **Quality-First Development**: Enforces TDD, coverage, and quality standards
+- **Developer Productivity**: Automates repetitive tasks and ensures consistency
+- **Open Source Community**: Shareable patterns and best practices
 
 ## Development Guidelines
 
-Following development standards from DanMarshall909/Anchor:
+Based on proven patterns from the Anchor project, these guidelines ensure quality and consistency:
 
 ### Test-Driven Development (MANDATORY)
 - **Red-Green-Refactor-Cover-Commit cycle**: Write failing test, implement minimal code, refactor, ensure coverage, commit
@@ -40,11 +46,11 @@ This repository will be integrated as a submodule and should contain:
 - `/docs/` - Documentation for tools and workflows
 - `/config/` - Shared configuration files and standards
 
-### Migration Strategy
-- Extract scripts from `DanMarshall909/Anchor/scripts/` to this repository
-- Maintain compatibility during transition
+### Design Principles
 - Each tool should be self-contained and language-agnostic where possible
-- Focus on reusability across multiple projects
+- Focus on maximum reusability across different projects and tech stacks
+- Provide sensible defaults with easy customization options
+- Clear documentation and examples for adoption by other teams
 
 ## GitHub Integration
 
@@ -110,8 +116,9 @@ git submodule add https://github.com/DanMarshall909/workflow-tools.git workflow-
 ./workflow-tools/tools/quality-gate/run.sh
 ```
 
-### Compatibility Requirements
+### Integration Requirements
 - All scripts must work regardless of parent project structure
 - Use relative paths and environment detection
 - Provide configuration override mechanisms
-- Maintain backward compatibility during migration from Anchor project
+- Support multiple integration patterns (submodule, direct clone, package manager)
+- Comprehensive documentation for setup and customization
