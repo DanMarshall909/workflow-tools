@@ -1,0 +1,94 @@
+{
+  "platforms": {
+    "dotnet": {
+      "detection": ["*.csproj", "*.sln", "global.json"],
+      "commands": {
+        "build": "dotnet build",
+        "test": "dotnet test",
+        "test_quiet": "dotnet test --no-build --verbosity quiet",
+        "test_verbose": "dotnet test --verbosity normal",
+        "coverage": "dotnet test --collect:\"XPlat Code Coverage\"",
+        "format": "dotnet format"
+      },
+      "test_patterns": {
+        "passed": "Passed:.*([0-9]+)",
+        "failed": "Failed:.*([0-9]+)",
+        "total": "Total tests:.*([0-9]+)"
+      }
+    },
+    "nodejs": {
+      "detection": ["package.json", "yarn.lock", "pnpm-lock.yaml"],
+      "commands": {
+        "build": "npm run build",
+        "test": "npm test",
+        "test_quiet": "npm test -- --silent",
+        "test_verbose": "npm test -- --verbose",
+        "coverage": "npm run test:coverage",
+        "format": "npm run format"
+      },
+      "test_patterns": {
+        "passed": "✓.*([0-9]+).*passing",
+        "failed": "([0-9]+).*failing",
+        "total": "([0-9]+).*tests?"
+      }
+    },
+    "python": {
+      "detection": ["requirements.txt", "pyproject.toml", "setup.py", "Pipfile"],
+      "commands": {
+        "build": "python -m build",
+        "test": "python -m pytest",
+        "test_quiet": "python -m pytest -q",
+        "test_verbose": "python -m pytest -v",
+        "coverage": "python -m pytest --cov",
+        "format": "black ."
+      },
+      "test_patterns": {
+        "passed": "([0-9]+) passed",
+        "failed": "([0-9]+) failed",
+        "total": "([0-9]+) (passed|failed|skipped)"
+      }
+    },
+    "go": {
+      "detection": ["go.mod", "go.sum"],
+      "commands": {
+        "build": "go build ./...",
+        "test": "go test ./...",
+        "test_quiet": "go test -v=false ./...",
+        "test_verbose": "go test -v ./...",
+        "coverage": "go test -cover ./...",
+        "format": "go fmt ./..."
+      },
+      "test_patterns": {
+        "passed": "PASS.*([0-9]+)",
+        "failed": "FAIL.*([0-9]+)",
+        "total": "([0-9]+).*tests?"
+      }
+    },
+    "rust": {
+      "detection": ["Cargo.toml", "Cargo.lock"],
+      "commands": {
+        "build": "cargo build",
+        "test": "cargo test",
+        "test_quiet": "cargo test --quiet",
+        "test_verbose": "cargo test -- --nocapture",
+        "coverage": "cargo tarpaulin",
+        "format": "cargo fmt"
+      },
+      "test_patterns": {
+        "passed": "test result: ok\\. ([0-9]+) passed",
+        "failed": "([0-9]+) failed",
+        "total": "([0-9]+) passed"
+      }
+    }
+  },
+  "fallback": {
+    "commands": {
+      "build": "make build",
+      "test": "make test",
+      "test_quiet": "make test-quiet",
+      "test_verbose": "make test-verbose",
+      "coverage": "make coverage",
+      "format": "make format"
+    }
+  }
+}

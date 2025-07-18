@@ -1,0 +1,41 @@
+{
+  "tdd": {
+    "progress_file": "PROGRESS.md",
+    "phases": ["RED", "GREEN", "REFACTOR", "COVER", "COMMIT"],
+    "auto_advance": true,
+    "break_enforcement": true,
+    "break_interval_minutes": 25,
+    "session_timeout_minutes": 120,
+    "colors": {
+      "enabled": true,
+      "red": "\\033[0;31m",
+      "green": "\\033[0;32m", 
+      "yellow": "\\033[1;33m",
+      "blue": "\\033[0;34m",
+      "cyan": "\\033[0;36m",
+      "reset": "\\033[0m"
+    },
+    "emojis": {
+      "enabled": true,
+      "red": "🔴",
+      "green": "🟢", 
+      "refactor": "🔧",
+      "cover": "📊",
+      "commit": "✅",
+      "thinking": "🤔",
+      "running": "🏃",
+      "success": "🎉"
+    }
+  },
+  "quality": {
+    "coverage_threshold": 80,
+    "mutation_threshold": 70,
+    "complexity_threshold": 10,
+    "enforce_thresholds": true
+  },
+  "git": {
+    "auto_commit": false,
+    "commit_template": "feat: {description}\\n\\n{details}\\n\\n🤖 Generated with TDD Workflow",
+    "require_clean_working_tree": true
+  }
+}

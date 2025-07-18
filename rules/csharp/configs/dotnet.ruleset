@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Workflow Tools - C# Code Analysis Rules" 
+         Description="Code analysis rules emphasizing security, privacy, and ADHD-friendly development" 
+         ToolsVersion="17.0">
+  <IncludeAll Action="Warning" />
+  
+  <!-- SonarAnalyzer.CSharp Rules -->
+  <Rules AnalyzerId="SonarAnalyzer.CSharp" RuleNamespace="SonarAnalyzer.CSharp">
+    <!-- Security Critical - Must Fix -->
+    <Rule Id="S2068" Action="Error" /> <!-- Hard-coded credentials -->
+    <Rule Id="S2076" Action="Error" /> <!-- OS command injection -->
+    <Rule Id="S2078" Action="Error" /> <!-- LDAP injection -->
+    <Rule Id="S2091" Action="Error" /> <!-- XPath injection -->
+    <Rule Id="S2631" Action="Error" /> <!-- Path traversal -->
+    <Rule Id="S3649" Action="Error" /> <!-- SQL injection -->
+    <Rule Id="S5042" Action="Error" /> <!-- Zip bomb -->
+    <Rule Id="S5443" Action="Error" /> <!-- Operating system command injection -->
+    
+    <!-- Privacy & Data Protection -->
+    <Rule Id="S6424" Action="Error" /> <!-- Don't log user input -->
+    <Rule Id="S4507" Action="Error" /> <!-- Debug features in production -->
+    <Rule Id="S5445" Action="Error" /> <!-- Insecure temporary file -->
+    <Rule Id="S4784" Action="Error" /> <!-- Using regular expressions with user input -->
+    
+    <!-- Code Quality - Maintainability -->
+    <Rule Id="S125" Action="Error" /> <!-- Remove commented code -->
+    <Rule Id="S1125" Action="Error" /> <!-- Remove redundant boolean literals -->
+    <Rule Id="S1854" Action="Error" /> <!-- Remove dead code -->
+    <Rule Id="S2259" Action="Error" /> <!-- Null dereference -->
+    <Rule Id="S3459" Action="Error" /> <!-- Remove unassigned fields -->
+    <Rule Id="S1144" Action="Error" /> <!-- Remove unused private members -->
+    
+    <!-- ADHD-Friendly Rules - Keep Code Simple -->
+    <Rule Id="S138" Action="Error" /> <!-- Methods should not have too many lines (50) -->
+    <Rule Id="S1067" Action="Warning" /> <!-- Expressions should not be too complex -->
+    <Rule Id="S1200" Action="Warning" /> <!-- Classes should not be coupled to too many other classes -->
+    <Rule Id="S1151" Action="Error" /> <!-- Switch cases should not have too many lines -->
+    <Rule Id="S107" Action="Error" /> <!-- Methods should not have too many parameters (max 7) -->
+    <Rule Id="S1479" Action="Warning" /> <!-- Switch statements should not have too many cases (max 30) -->
+    
+    <!-- Async/Await Best Practices -->
+    <Rule Id="S3168" Action="Error" /> <!-- async void -->
+    <Rule Id="S4462" Action="Error" /> <!-- Blocking async -->
+    <Rule Id="S4457" Action="Error" /> <!-- Split method parameter on async -->
+    <Rule Id="S6602" Action="Warning" /> <!-- Use Find instead of FirstOrDefault -->
+    <Rule Id="S6966" Action="Error" /> <!-- Await in async method -->
+    
+    <!-- Testing Rules -->
+    <Rule Id="S2699" Action="Error" /> <!-- Tests must have assertions -->
+    <Rule Id="S3415" Action="Error" /> <!-- Assertion order -->
+    <Rule Id="S5034" Action="Error" /> <!-- Test method names should follow convention -->
+    
+    <!-- Performance -->
+    <Rule Id="S4456" Action="Warning" /> <!-- Avoid unnecessary boxing -->
+    <Rule Id="S6608" Action="Warning" /> <!-- Use IndexOf instead of StartsWith for single char -->
+    <Rule Id="S6610" Action="Warning" /> <!-- Use StartsWith instead of IndexOf -->
+  </Rules>
+  
+  <!-- Security Code Scan Rules -->
+  <Rules AnalyzerId="SecurityCodeScan.VS2019" RuleNamespace="SecurityCodeScan">
+    <Rule Id="SCS0001" Action="Error" /> <!-- Command Injection -->
+    <Rule Id="SCS0002" Action="Error" /> <!-- SQL Injection -->
+    <Rule Id="SCS0003" Action="Error" /> <!-- XPath Injection -->
+    <Rule Id="SCS0004" Action="Error" /> <!-- Certificate Validation Disabled -->
+    <Rule Id="SCS0005" Action="Error" /> <!-- Weak Random Number Generator -->
+    <Rule Id="SCS0006" Action="Error" /> <!-- Weak Hashing -->
+    <Rule Id="SCS0007" Action="Error" /> <!-- XML External Entity Injection -->
+    <Rule Id="SCS0018" Action="Error" /> <!-- Path Traversal -->
+    <Rule Id="SCS0028" Action="Error" /> <!-- Insecure Deserialization -->
+    <Rule Id="SCS0029" Action="Error" /> <!-- Information Disclosure -->
+    <Rule Id="SCS0031" Action="Error" /> <!-- HttpOnly Cookie -->
+  </Rules>
+  
+  <!-- Microsoft.CodeAnalysis.NetAnalyzers -->
+  <Rules AnalyzerId="Microsoft.CodeAnalysis.NetAnalyzers" RuleNamespace="Microsoft.CodeAnalysis.NetAnalyzers">
+    <!-- Performance Rules -->
+    <Rule Id="CA1802" Action="Warning" /> <!-- Use literals where appropriate -->
+    <Rule Id="CA1805" Action="Warning" /> <!-- Do not initialize unnecessarily -->
+    <Rule Id="CA1806" Action="Error" /> <!-- Do not ignore method results -->
+    <Rule Id="CA1829" Action="Warning" /> <!-- Use Length/Count property -->
+    <Rule Id="CA1830" Action="Warning" /> <!-- Use StringComparison overloads -->
+    <Rule Id="CA1835" Action="Warning" /> <!-- Use ReadAsync/WriteAsync overloads -->
+    
+    <!-- Security Rules -->
+    <Rule Id="CA2100" Action="Error" /> <!-- Review SQL queries -->
+    <Rule Id="CA3001" Action="Error" /> <!-- Review for SQL injection -->
+    <Rule Id="CA3003" Action="Error" /> <!-- Review for path injection -->
+    <Rule Id="CA3004" Action="Error" /> <!-- Review for LDAP injection -->
+    <Rule Id="CA3006" Action="Error" /> <!-- Review for process command injection -->
+    <Rule Id="CA3061" Action="Error" /> <!-- Do not add schema by URL -->
+    <Rule Id="CA5350" Action="Error" /> <!-- Do not use weak cryptography -->
+    <Rule Id="CA5351" Action="Error" /> <!-- Do not use broken cryptography -->
+    <Rule Id="CA5359" Action="Error" /> <!-- Do not disable certificate validation -->
+    <Rule Id="CA5360" Action="Error" /> <!-- Do not call dangerous cryptography methods -->
+    
+    <!-- Design Rules -->
+    <Rule Id="CA1062" Action="Error" /> <!-- Validate arguments of public methods -->
+    <Rule Id="CA1508" Action="Error" /> <!-- Avoid dead conditional code -->
+    <Rule Id="CA1063" Action="Warning" /> <!-- Implement IDisposable correctly -->
+    <Rule Id="CA2000" Action="Warning" /> <!-- Dispose objects before losing scope -->
+    
+    <!-- Naming Rules -->
+    <Rule Id="CA1707" Action="Warning" /> <!-- Remove underscores from names -->
+    <Rule Id="CA1708" Action="Warning" /> <!-- Identifiers should differ by more than case -->
+    <Rule Id="CA1710" Action="Warning" /> <!-- Identifiers should have correct suffix -->
+  </Rules>
+  
+  <!-- Meziantou.Analyzer Rules -->
+  <Rules AnalyzerId="Meziantou.Analyzer" RuleNamespace="Meziantou.Analyzer">
+    <!-- Async Best Practices -->
+    <Rule Id="MA0004" Action="Error" /> <!-- Use ConfigureAwait(false) -->
+    <Rule Id="MA0042" Action="Error" /> <!-- Do not use blocking calls in async -->
+    <Rule Id="MA0045" Action="Error" /> <!-- Do not use blocking in sync (make async) -->
+    <Rule Id="MA0040" Action="Error" /> <!-- Use a cancellation token -->
+    
+    <!-- Code Quality -->
+    <Rule Id="MA0047" Action="Error" /> <!-- Declare types in namespaces -->
+    <Rule Id="MA0048" Action="Error" /> <!-- File name must match type name -->
+    <Rule Id="MA0051" Action="Warning" /> <!-- Method is too long (exceeds 50 lines) -->
+    <Rule Id="MA0097" Action="Warning" /> <!-- Class should specify culture -->
+    
+    <!-- Performance -->
+    <Rule Id="MA0063" Action="Warning" /> <!-- Optimize Enumerable.Count usage -->
+    <Rule Id="MA0066" Action="Warning" /> <!-- Use Equals instead of equality operator -->
+    <Rule Id="MA0089" Action="Warning" /> <!-- Use char overload -->
+  </Rules>
+  
+  <!-- Roslynator Rules -->
+  <Rules AnalyzerId="Roslynator.Analyzers" RuleNamespace="Roslynator">
+    <!-- Code Quality -->
+    <Rule Id="RCS1036" Action="Error" /> <!-- Remove redundant empty line -->
+    <Rule Id="RCS1037" Action="Error" /> <!-- Remove trailing whitespace -->
+    <Rule Id="RCS1097" Action="Error" /> <!-- Remove redundant ToString call -->
+    <Rule Id="RCS1118" Action="Warning" /> <!-- Mark local variable as const -->
+    <Rule Id="RCS1123" Action="Warning" /> <!-- Add parentheses when necessary -->
+    
+    <!-- Simplification -->
+    <Rule Id="RCS1003" Action="Info" /> <!-- Add braces to if-else -->
+    <Rule Id="RCS1146" Action="Info" /> <!-- Use conditional operator -->
+    <Rule Id="RCS1199" Action="Info" /> <!-- Simplify boolean expression -->
+  </Rules>
+  
+  <!-- AsyncFixer Rules -->
+  <Rules AnalyzerId="AsyncFixer" RuleNamespace="AsyncFixer">
+    <Rule Id="AsyncFixer01" Action="Error" /> <!-- Unnecessary async/await -->
+    <Rule Id="AsyncFixer02" Action="Error" /> <!-- Long-running operations under async methods -->
+    <Rule Id="AsyncFixer03" Action="Error" /> <!-- Fire-and-forget async void methods -->
+    <Rule Id="AsyncFixer04" Action="Error" /> <!-- Fire-and-forget async call inside using block -->
+  </Rules>
+  
+  <!-- Custom Project Suppressions -->
+  <!-- Add project-specific suppressions here when needed -->
+  
+</RuleSet>
