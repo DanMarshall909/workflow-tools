@@ -1,0 +1,155 @@
+# LLM Quick Query Reference
+# Optimized for fast rule lookups and minimal context loading
+
+quick_queries:
+  # Test Naming Queries
+  test_naming:
+    summary_all: |
+      Query: SELECT rule_id, RULE_SUMMARY FROM rules WHERE category='test-naming'
+    
+    good_patterns: |
+      Query: EXTRACT PATTERN_GOOD_* FROM rules WHERE category='test-naming'
+    
+    bad_patterns: |
+      Query: EXTRACT PATTERN_BAD_* FROM rules WHERE category='test-naming'
+    
+    examples_typescript: |
+      Query: SELECT GOOD_EXAMPLE_001 FROM 'typescript-test-naming'
+    
+    fix_should_tests: |
+      Query: SHOW migration steps for tests containing 'should'
+
+  # Code Quality Queries  
+  code_quality:
+    typescript_requirements: |
+      Query: EXTRACT MUST_FOLLOW FROM 'typescript-code-quality'
+    
+    function_size_limits: |
+      Query: SELECT metrics.max_function_lines FROM rules WHERE category='code-quality'
+    
+    clean_code_summary: |
+      Query: SELECT RULE_SUMMARY FROM 'clean-code-principles'
+
+  # Security Queries
+  security:
+    owasp_checklist: |
+      Query: EXTRACT requirements WHERE tag='owasp' FROM 'secure-development'
+    
+    input_validation: |
+      Query: SHOW GOOD_EXAMPLE_* WHERE topic='input-validation'
+    
+    security_antipatterns: |
+      Query: EXTRACT MUST_NOT_DO FROM 'secure-development'
+
+  # Git Workflow Queries
+  git:
+    commit_types: |
+      Query: LIST commit types FROM 'conventional-commits' WITH descriptions
+    
+    branch_formats: |
+      Query: SHOW branch naming patterns FROM 'branch-naming'
+    
+    pr_template: |
+      Query: EXTRACT PR template FROM 'pull-request-standards'
+
+# Common Compliance Checks
+compliance_checks:
+  test_name_check:
+    pattern: "it\\(['\"]should|test\\(.*should"
+    rule: "typescript-test-naming"
+    violation: "ANT001"
+    fix: "Remove 'should' and describe behavior"
+
+  function_size_check:
+    max_lines: 50
+    rule: "clean-code-principles"
+    requirement: "REQ001"
+    
+  commit_format_check:
+    pattern: "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore)(\\(.+\\))?: .+"
+    rule: "conventional-commits"
+    requirement: "REQ001"
+
+# Quick Fixes
+quick_fixes:
+  test_naming:
+    - find: "should return (.*) when (.*)"
+      replace: "$2_returns_$1"
+    
+    - find: "should handle (.*)"  
+      replace: "$1_is_handled_correctly"
+    
+    - find: "test(.*) function"
+      replace: "[describe what it does]"
+
+  commit_messages:
+    - find: "^fix bug"
+      replace: "fix(scope): [describe what was fixed]"
+    
+    - find: "^update"
+      replace: "chore: update [what was updated]"
+
+# Rule Relationships Graph
+relationships:
+  typescript_stack:
+    - typescript-test-naming
+    - typescript-code-quality  
+    - eslint-config
+    
+  csharp_stack:
+    - csharp-test-naming
+    - csharp-code-quality
+    - dotnet-ruleset
+    
+  universal_base:
+    - universal-test-naming
+    - clean-code-principles
+    - secure-development
+
+# Quick Start Checklists
+checklists:
+  new_typescript_project:
+    - rule: typescript-test-naming
+      action: "Name tests as business scenarios"
+    - rule: typescript-code-quality
+      action: "Enable strict TypeScript"
+    - rule: eslint-config
+      action: "Copy ESLint configuration"
+    - rule: conventional-commits
+      action: "Set up commit hooks"
+
+  code_review:
+    - check: "Test names describe behavior"
+    - check: "No 'should' in test names"  
+    - check: "Functions under 50 lines"
+    - check: "Meaningful variable names"
+    - check: "No hardcoded secrets"
+    - check: "Proper error handling"
+
+# Minimal Context Patterns
+minimal_context:
+  for_code_generation:
+    load:
+      - GOOD_EXAMPLE_001
+      - MUST_FOLLOW requirements
+    skip:
+      - CONTEXT_AND_RATIONALE
+      - MIGRATION_GUIDE
+      - METRICS
+
+  for_code_review:
+    load:
+      - MUST_NOT_DO
+      - BAD_EXAMPLE_*
+    skip:
+      - GOOD_EXAMPLE_*
+      - AUTOMATED_CHECKS
+
+  for_learning:
+    load:
+      - RULE_SUMMARY
+      - CONTEXT_AND_RATIONALE
+      - One example of each type
+    skip:
+      - AUTOMATED_CHECKS
+      - MIGRATION_GUIDE

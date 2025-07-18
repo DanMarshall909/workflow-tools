@@ -1,0 +1,262 @@
+{
+  "version": "1.0.0",
+  "generated": "2024-01-20",
+  "total_rules": 15,
+  "categories": {
+    "test-naming": {
+      "description": "Business-focused test naming conventions",
+      "rules": ["universal-test-naming", "typescript-test-naming", "csharp-test-naming", "python-test-naming"]
+    },
+    "code-quality": {
+      "description": "Code quality and clean code principles",
+      "rules": ["clean-code-principles", "typescript-code-quality", "csharp-code-quality", "python-code-quality"]
+    },
+    "security": {
+      "description": "Security-first development practices",
+      "rules": ["secure-development"]
+    },
+    "git-workflow": {
+      "description": "Version control best practices",
+      "rules": ["conventional-commits", "branch-naming", "pull-request-standards"]
+    },
+    "configuration": {
+      "description": "Tool configurations and setup",
+      "rules": ["eslint-config", "dotnet-ruleset"]
+    }
+  },
+  "rules": {
+    "universal-test-naming": {
+      "id": "universal-test-naming",
+      "path": "generic/test-naming/universal-principles.md",
+      "category": "test-naming",
+      "language": "universal",
+      "severity": "required",
+      "tags": ["testing", "naming", "business-focused", "beginner-friendly"],
+      "summary": "Name tests as business scenarios understandable by non-programmers",
+      "key_requirements": [
+        "Focus on business behavior, not implementation",
+        "Avoid 'should' language",
+        "Use natural language",
+        "No technical jargon"
+      ],
+      "metrics": {
+        "complexity": "low",
+        "adoption_effort": "medium",
+        "impact": "high"
+      }
+    },
+    "typescript-test-naming": {
+      "id": "typescript-test-naming",
+      "path": "typescript/test-naming/jest-react-testing-library.md",
+      "category": "test-naming",
+      "language": "typescript",
+      "frameworks": ["jest", "react-testing-library"],
+      "severity": "required",
+      "tags": ["testing", "jest", "react", "typescript"],
+      "summary": "TypeScript/Jest specific test naming following business-focused patterns",
+      "prerequisites": ["universal-test-naming"],
+      "key_requirements": [
+        "Use underscores for readability in test names",
+        "Group tests by business scenarios",
+        "Focus on user actions and outcomes"
+      ],
+      "examples": {
+        "good": ["user_can_login_with_valid_credentials", "search_results_appear_after_typing"],
+        "bad": ["should_call_api_on_submit", "test_handleClick_function"]
+      }
+    },
+    "csharp-test-naming": {
+      "id": "csharp-test-naming",
+      "path": "csharp/test-naming/xunit-fluent-assertions.md",
+      "category": "test-naming",
+      "language": "csharp",
+      "frameworks": ["xunit", "fluentassertions"],
+      "severity": "required",
+      "tags": ["testing", "xunit", "dotnet", "csharp"],
+      "summary": "C#/xUnit test naming with business focus and FluentAssertions",
+      "prerequisites": ["universal-test-naming"],
+      "key_requirements": [
+        "Use underscores in test method names",
+        "Business context in assertion messages",
+        "Group related scenarios in nested classes"
+      ]
+    },
+    "python-test-naming": {
+      "id": "python-test-naming",
+      "path": "python/test-naming/pytest-unittest.md",
+      "category": "test-naming",
+      "language": "python",
+      "frameworks": ["pytest", "unittest"],
+      "severity": "required",
+      "tags": ["testing", "pytest", "python"],
+      "summary": "Python test naming using snake_case and business scenarios",
+      "prerequisites": ["universal-test-naming"],
+      "key_requirements": [
+        "Use snake_case for test functions",
+        "Descriptive docstrings for complex tests",
+        "Parametrized tests with meaningful IDs"
+      ]
+    },
+    "clean-code-principles": {
+      "id": "clean-code-principles",
+      "path": "generic/code-quality/clean-code-principles.md",
+      "category": "code-quality",
+      "language": "universal",
+      "severity": "required",
+      "tags": ["clean-code", "solid", "refactoring", "beginner-friendly"],
+      "summary": "Universal clean code principles including SOLID and DRY",
+      "key_requirements": [
+        "Functions should be small (5-20 lines)",
+        "Single responsibility principle",
+        "Meaningful names",
+        "No magic numbers"
+      ],
+      "metrics": {
+        "max_function_lines": 50,
+        "max_parameters": 4,
+        "max_indent_levels": 3
+      }
+    },
+    "typescript-code-quality": {
+      "id": "typescript-code-quality",
+      "path": "typescript/code-quality/general-standards.md",
+      "category": "code-quality",
+      "language": "typescript",
+      "severity": "required",
+      "tags": ["typescript", "react", "performance", "type-safety"],
+      "summary": "TypeScript specific code quality with React patterns",
+      "prerequisites": ["clean-code-principles"],
+      "key_requirements": [
+        "Strict TypeScript configuration",
+        "React.memo for expensive components",
+        "Proper error boundaries",
+        "No any types"
+      ],
+      "related_rules": ["eslint-config"]
+    },
+    "secure-development": {
+      "id": "secure-development",
+      "path": "generic/security/secure-development.md",
+      "category": "security",
+      "language": "universal",
+      "severity": "required",
+      "tags": ["security", "owasp", "privacy", "authentication"],
+      "summary": "Security-first development covering OWASP Top 10",
+      "key_requirements": [
+        "Never trust user input",
+        "Parameterized queries only",
+        "Secure password hashing",
+        "Proper error handling"
+      ],
+      "compliance": ["owasp-top-10", "gdpr-ready"]
+    },
+    "conventional-commits": {
+      "id": "conventional-commits",
+      "path": "git/commits/conventional-commits.md",
+      "category": "git-workflow",
+      "language": "universal",
+      "severity": "required",
+      "tags": ["git", "commits", "versioning", "automation"],
+      "summary": "Structured commit messages for automation and clarity",
+      "key_requirements": [
+        "Use type(scope): subject format",
+        "Types: feat, fix, docs, style, refactor, test, chore",
+        "Breaking changes clearly marked",
+        "Present tense, imperative mood"
+      ],
+      "automation_benefits": ["semantic-versioning", "changelog-generation", "ci-triggers"]
+    },
+    "branch-naming": {
+      "id": "branch-naming",
+      "path": "git/branches/branch-naming.md",
+      "category": "git-workflow",
+      "language": "universal",
+      "severity": "required",
+      "tags": ["git", "branches", "workflow"],
+      "summary": "Consistent branch naming for automation and clarity",
+      "key_requirements": [
+        "Format: type/ticket-description",
+        "Types: feature, bugfix, hotfix, release",
+        "Lowercase with hyphens",
+        "Include ticket number when available"
+      ]
+    },
+    "pull-request-standards": {
+      "id": "pull-request-standards",
+      "path": "git/prs/pull-request-standards.md",
+      "category": "git-workflow",
+      "language": "universal",
+      "severity": "required",
+      "tags": ["git", "code-review", "collaboration"],
+      "summary": "Comprehensive PR guidelines for effective reviews",
+      "key_requirements": [
+        "Use PR template",
+        "Clear description of changes",
+        "Link related issues",
+        "Screenshots for UI changes"
+      ],
+      "prerequisites": ["conventional-commits", "branch-naming"]
+    },
+    "eslint-config": {
+      "id": "eslint-config",
+      "path": "typescript/configs/eslint.config.js",
+      "category": "configuration",
+      "language": "typescript",
+      "type": "config-file",
+      "severity": "required",
+      "tags": ["eslint", "linting", "typescript", "configuration"],
+      "summary": "Production-ready ESLint configuration for TypeScript/React",
+      "enforces": ["typescript-code-quality", "typescript-test-naming"],
+      "key_features": [
+        "TypeScript strict mode",
+        "React hooks rules",
+        "Import ordering",
+        "ADHD-friendly complexity limits"
+      ]
+    },
+    "dotnet-ruleset": {
+      "id": "dotnet-ruleset",
+      "path": "csharp/configs/dotnet.ruleset",
+      "category": "configuration",
+      "language": "csharp",
+      "type": "config-file",
+      "severity": "required",
+      "tags": ["dotnet", "analysis", "csharp", "configuration"],
+      "summary": "Comprehensive .NET code analysis ruleset",
+      "enforces": ["csharp-code-quality", "secure-development"],
+      "analyzers": ["SonarAnalyzer.CSharp", "SecurityCodeScan", "Microsoft.CodeAnalysis.NetAnalyzers"]
+    }
+  },
+  "relationships": {
+    "prerequisites": {
+      "typescript-test-naming": ["universal-test-naming"],
+      "csharp-test-naming": ["universal-test-naming"],
+      "python-test-naming": ["universal-test-naming"],
+      "typescript-code-quality": ["clean-code-principles"],
+      "pull-request-standards": ["conventional-commits", "branch-naming"]
+    },
+    "enforced_by": {
+      "typescript-code-quality": ["eslint-config"],
+      "csharp-code-quality": ["dotnet-ruleset"]
+    },
+    "related": {
+      "typescript-test-naming": ["typescript-code-quality", "eslint-config"],
+      "conventional-commits": ["branch-naming", "pull-request-standards"]
+    }
+  },
+  "queries": {
+    "by_language": {
+      "typescript": ["typescript-test-naming", "typescript-code-quality", "eslint-config"],
+      "csharp": ["csharp-test-naming", "csharp-code-quality", "dotnet-ruleset"],
+      "python": ["python-test-naming", "python-code-quality"],
+      "universal": ["universal-test-naming", "clean-code-principles", "secure-development", "conventional-commits", "branch-naming", "pull-request-standards"]
+    },
+    "by_severity": {
+      "required": ["universal-test-naming", "typescript-test-naming", "clean-code-principles", "secure-development", "conventional-commits"],
+      "recommended": [],
+      "optional": []
+    },
+    "beginner_friendly": ["universal-test-naming", "clean-code-principles", "conventional-commits"],
+    "quick_wins": ["conventional-commits", "branch-naming", "eslint-config", "dotnet-ruleset"]
+  }
+}
