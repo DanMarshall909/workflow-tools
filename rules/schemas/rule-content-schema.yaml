@@ -1,0 +1,130 @@
+# Rule Content Structure Schema
+# Validates the structure of rule markdown content
+
+required_sections:
+  - RULE_SUMMARY
+  - APPLIES_TO
+  - REQUIREMENTS
+  - EXAMPLES
+
+sections:
+  RULE_SUMMARY:
+    description: One-line summary of the rule
+    max_length: 200
+    format: plain_text
+    
+  APPLIES_TO:
+    description: Where this rule applies
+    required_fields:
+      - Languages
+      - Development Phase
+    optional_fields:
+      - Frameworks
+      - File Patterns
+      
+  REQUIREMENTS:
+    subsections:
+      MUST_FOLLOW:
+        item_format: "**[REQ###]** Description"
+        requires:
+          - Rationale
+          - Impact
+      MUST_NOT_DO:
+        item_format: "**[ANT###]** Description"
+        requires:
+          - Why
+          - Instead
+          
+  EXAMPLES:
+    min_good_examples: 2
+    min_bad_examples: 1
+    example_format:
+      pattern: "### {TYPE}_EXAMPLE_{NUMBER}: {Title}"
+      requires:
+        - code_block
+        - explanation
+        
+  PATTERNS:
+    optional: true
+    pattern_types:
+      - PATTERN_GOOD_###
+      - PATTERN_BAD_###
+    fields:
+      - pattern
+      - example
+      - matches
+      
+  AUTOMATED_CHECKS:
+    optional: true
+    should_include:
+      - linting_config
+      - validation_commands
+      - ci_integration
+      
+  METRICS:
+    optional: true
+    metric_format:
+      - metric_name
+      - target_value
+      - query_command
+      
+  MIGRATION_GUIDE:
+    optional: true
+    should_include:
+      - step_by_step_instructions
+      - common_challenges
+      
+  CONTEXT_AND_RATIONALE:
+    optional: true
+    should_include:
+      - why_exists
+      - evidence
+      - tradeoffs
+      
+  ENFORCEMENT_LEVEL:
+    optional: true
+    levels:
+      - Always
+      - Usually
+      - Sometimes
+    should_include:
+      - exceptions
+      
+  LLM_METADATA:
+    recommended: true
+    format: json_block
+    fields:
+      rule_relationships:
+        - depends_on
+        - enhances
+        - conflicts_with
+        - supersedes
+      extraction_hints:
+        - key_concept
+        - problem_solved
+        - applicable_contexts
+      query_patterns:
+        - example_questions
+
+extraction_markers:
+  format: "<!-- EXTRACT:{name}:start -->...<!-- EXTRACT:{name}:end -->"
+  standard_names:
+    - requirements
+    - antipatterns
+    - patterns
+    - metrics
+    
+section_naming:
+  format: CAPS_WITH_UNDERSCORES
+  examples:
+    - RULE_SUMMARY
+    - MUST_FOLLOW
+    - MUST_NOT_DO
+    - GOOD_EXAMPLE_001
+    - BAD_EXAMPLE_001
+    
+id_formats:
+  requirements: "REQ###"
+  antipatterns: "ANT###"
+  patterns: "PATTERN_{TYPE}_###"
+  examples: "{TYPE}_EXAMPLE_###"

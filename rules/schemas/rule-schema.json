@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Workflow-Tools Rule Schema",
+  "description": "JSON Schema for validating LLM-optimized rule files",
+  "type": "object",
+  "required": [
+    "rule_id",
+    "category",
+    "language",
+    "severity",
+    "tags",
+    "version",
+    "last_updated"
+  ],
+  "properties": {
+    "rule_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Unique lowercase identifier with hyphens"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "test-naming",
+        "code-quality",
+        "security",
+        "git-workflow",
+        "configuration"
+      ]
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "typescript",
+        "javascript",
+        "csharp",
+        "python",
+        "go",
+        "java",
+        "ruby",
+        "universal"
+      ]
+    },
+    "frameworks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional list of frameworks this rule applies to"
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["required", "recommended", "optional"]
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "minItems": 1
+    },
+    "prerequisites": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "description": "Rule IDs that must be understood first"
+    },
+    "related_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z0-9-]+$"
+      },
+      "description": "Rule IDs that are related to this rule"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    },
+    "last_updated": {
+      "type": "string",
+      "format": "date"
+    }
+  },
+  "additionalProperties": false
+}
