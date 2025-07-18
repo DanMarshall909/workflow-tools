@@ -140,6 +140,12 @@ describe('Business Feature', () => {
 })
 ```
 
+## See Also
+- [Universal Test Naming Principles](../../generic/test-naming/universal-principles.md)
+- [TypeScript Code Quality Standards](../code-quality/general-standards.md)
+- [ESLint Configuration](../configs/eslint.config.js)
+- [Why Business-Focused Test Names?](../../decisions/why-business-focused-test-names.md)
+
 ## References
 - [Enterprise Craftsmanship: You Naming Tests Wrong](https://enterprisecraftsmanship.com/posts/you-naming-tests-wrong/)
 - [React Testing Library Philosophy](https://testing-library.com/docs/guiding-principles/)

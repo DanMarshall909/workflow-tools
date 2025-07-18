@@ -252,3 +252,10 @@ const hasUsrCompOnb = (u: User): boolean => u.onbCompleted;
 - [ ] API calls are properly cached
 - [ ] Images are optimized and lazy-loaded
 - [ ] Bundle size impact assessed
+
+## See Also
+- [TypeScript Test Naming](../test-naming/jest-react-testing-library.md)
+- [ESLint Configuration](../configs/eslint.config.js)
+- [Clean Code Principles](../../generic/code-quality/clean-code-principles.md)
+- [Security Guidelines](../../generic/security/secure-development.md)
+- [Git Workflow](../../git/commits/conventional-commits.md)

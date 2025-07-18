@@ -36,6 +36,13 @@ These rules are designed to be:
 - **Actionable**: Include examples and ready-to-use configurations
 - **Universal**: Applicable across different project types
 
+## 🧭 Navigation
+
+- **[INDEX.md](INDEX.md)** - Find rules by scenario
+- **[TAGS.md](TAGS.md)** - Browse by technology or topic
+- **[Quick Reference Cards](quickref/)** - Cheat sheets for common tasks
+- **[Decision Records](decisions/)** - Why we chose these standards
+
 ## 🚀 Quick Start
 
 ### For TypeScript/React Projects
@@ -138,6 +145,13 @@ To add new rules or improve existing ones:
 3. Provide both good and bad patterns
 4. Link to authoritative sources
 5. Consider ADHD-friendly formatting
+
+## 🔄 Recent Additions
+
+- **Navigation System**: INDEX.md and TAGS.md for easy rule discovery
+- **Quick Reference Cards**: Cheat sheets for test naming, git workflow, clean code, and security
+- **Decision Records**: Explanations for why we chose these standards
+- **Cross-References**: "See Also" sections in all rule files
 
 ## 📖 References
 
